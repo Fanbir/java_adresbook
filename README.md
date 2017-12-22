@@ -2,9 +2,8 @@
 
 Command Gradle
 
-gradle build
-gradle run
-gradle wrapper  - creat 'Run' gradle
-===============
-gradlew build
-gradlew run
+0) gradle build
+1) gradle run
+3) gradle wrapper  - created 'Run' gradle
+4) gradlew build
+5) gradlew run

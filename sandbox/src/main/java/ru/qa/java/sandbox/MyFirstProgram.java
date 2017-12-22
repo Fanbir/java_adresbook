@@ -7,23 +7,14 @@ public class MyFirstProgram {
         hello("Pep");
         hello("Arsen");
 
-        double k = 6;
-        System.out.println("Площадь квадрата со стороной " + k + " = " + area(k));
+        Square s = new Square(8);
+        System.out.println("Площадь квадрата со стороной " + s.k + " = " + s.area());
 
-        double p1 = 11;
-        double p2 = 14;
-        System.out.println("Площадь прямоугольника со сторонами " + p1 + " и " + p2 + " = " + area(p1, p2));
+        Rectangle r = new Rectangle(2,5);
+        System.out.println("Площадь прямоугольника со сторонами " + r.a + " и " + r.b + " = " + r.area());
     }
 
     public static void hello(String somebody) {
         System.out.println("Hello " + somebody + " !");
-    }
-
-    public static double area(double a){
-        return a * a;
-    }
-
-    public static double area(double a, double b){
-        return a * b;
     }
 }

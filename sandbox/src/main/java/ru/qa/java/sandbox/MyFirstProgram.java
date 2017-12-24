@@ -25,6 +25,11 @@ public class MyFirstProgram {
         Point p6 = new Point(4,9);
         System.out.println("Расстояние между двумя точками " + "(" + p5.x + ";" + p5.y + ")" + " и " +
                                                                 "(" + p6.x + ";" + p6.y + ")" + " = " + p5.distance(p6));
+
+        Vector v1 = new Vector(-2,6);
+        Vector v2 = new Vector(4,-12);
+        System.out.println("Параллельны ли вектора - " + " " + v1.parallelismVectors(v2) );
+
     }
 //    public static void hello(String somebody) {
 //        System.out.println("Hello " + somebody + " !");

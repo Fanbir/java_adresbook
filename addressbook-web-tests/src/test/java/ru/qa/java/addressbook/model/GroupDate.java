@@ -1,4 +1,4 @@
-package ru.qa.java.addressbook;
+package ru.qa.java.addressbook.model;
 
 public class GroupDate {
   private final String name;

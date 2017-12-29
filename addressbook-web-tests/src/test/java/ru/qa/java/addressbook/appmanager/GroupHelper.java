@@ -24,15 +24,19 @@ public class GroupHelper  extends  HelperBase{
     click(By.name("new"));
   }
 
-  public void returnGroupPage() {
-    click(By.linkText("groups"));
-  }
-
   public void deletedSelectedGroup() {
     click(By.name("delete"));
   }
 
   public void selectGroup() {
     click(By.xpath(".//*[@id='content']/form/span[1]/input"));
+  }
+
+  public void initGroupModification() {
+    click(By.name("edit"));
+  }
+
+  public void submitGroupModification() {
+    click(By.name("update"));
   }
 }

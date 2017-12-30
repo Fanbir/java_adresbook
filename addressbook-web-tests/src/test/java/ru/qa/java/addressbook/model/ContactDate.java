@@ -13,11 +13,8 @@ public class ContactDate {
   private final String address2;
   private final String notes;
   private final String phone2;
-  private String group;
 
-  public ContactDate(String firstName, String lastName, String nickName, String company,
-                     String address, String work, String email, String mobile, String byEar,
-                     String address2, String notes, String phone2, String group) {
+  public ContactDate(String firstName, String lastName, String nickName, String company, String address, String work, String email, String mobile, String byEar, String address2, String notes, String phone2) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.nickName = nickName;
@@ -30,7 +27,6 @@ public class ContactDate {
     this.address2 = address2;
     this.notes = notes;
     this.phone2 = phone2;
-    this.group = group;
   }
 
   public String getFirstName() {
@@ -79,9 +75,5 @@ public class ContactDate {
 
   public String getPhone2() {
     return phone2;
-  }
-
-  public String getGroup() {
-    return group;
   }
 }

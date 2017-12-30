@@ -20,19 +20,11 @@ public class NavigationHelper extends HelperBase{
     click(By.linkText("groups"));
   }
 
-  public void gotoAddContact() {
-   click(By.linkText("add new"));
-  }
-
   public void returnHomePage() {
     if(isElementPresent(By.name("maintable"))) {
       return;
     }
     click(By.linkText("home"));
-  }
-
-  public void gotoHomePage() {
-    click(By.xpath(".//*[@id='nav']/ul/li[1]/a"));
   }
 
 }

@@ -12,25 +12,12 @@ public class ContactHelper extends HelperBase{
    super(wd);
   }
 
-  public void fillConatctForm(ContactDate contactDate, boolean creation) {
+  public void fillConatctForm(ContactDate contactDate) {
     type(By.name("firstname"), contactDate.getFirstName());
     type(By.name("lastname"), contactDate.getLastName());
-    type(By.name("nickname"), contactDate.getNickName());
-    type(By.name("company"), contactDate.getCompany());
     type(By.name("address"), contactDate.getAddress());
-    type(By.name("work"), contactDate.getWork());
     type(By.name("email"), contactDate.getEmail());
-    type(By.name("mobile"), contactDate.getMobile());
-    type(By.name("byear"), contactDate.getByEar());
-    type(By.name("address2"), contactDate.getAddress2());
-    type(By.name("notes"), contactDate.getNotes());
     type(By.name("phone2"), contactDate.getPhone2());
-
-    if (creation) {
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactDate.getGroup());
-    } else {
-      Assert.assertFalse(isElementPresent(By.name("new_group")));
-    }
   }
 
   public void clickButtonAddContact() {
@@ -55,5 +42,23 @@ public class ContactHelper extends HelperBase{
 
   public void submitContactMOdification() {
     click(By.name("update"));
+  }
+
+  public void gotoAddContact() {
+    click(By.linkText("add new"));
+  }
+
+  public void gotoHomePage() {
+    click(By.linkText("home"));
+  }
+  public void createContact(ContactDate contact) {
+    gotoAddContact();
+    fillConatctForm(contact);
+    clickButtonAddContact();
+    gotoHomePage();
+  }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.xpath(".//*[@id='maintable']/tbody/tr[2]"));
   }
 }

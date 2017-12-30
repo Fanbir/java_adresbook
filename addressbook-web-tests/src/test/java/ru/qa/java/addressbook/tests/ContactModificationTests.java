@@ -7,12 +7,15 @@ public class ContactModificationTests extends TestBase {
 
   @Test
   public void testContactModification() {
-    app.getNavigationHelper().gotoHomePage();
+    app.getContactHelper().gotoHomePage();
+    if( ! app.getContactHelper().isThereAContact()) {
+      app.getContactHelper().createContact(new ContactDate("Arsen", "Wenger",
+              "London", "arsen_wenger@gmail.com",
+              "+78304458345435"));
+    }
     app.getContactHelper().selectContact();
     app.getContactHelper().initContactModification();
-    app.getContactHelper().fillConatctForm(new ContactDate("Arsen", "Wenger", "Ars",
-            "Arsenal", "London", "Manager", "arsen_wenger@gmail.com",
-            "+78304458345435", "1950", "England London", "4 space", "Emirets",null), false);
+    app.getContactHelper().fillConatctForm((new ContactDate("Arsen", "Wenger", "London", "arsen_wenger@gmail.com","+78304458345435")));
     app.getContactHelper().submitContactMOdification();
     app.getNavigationHelper().returnHomePage();
   }

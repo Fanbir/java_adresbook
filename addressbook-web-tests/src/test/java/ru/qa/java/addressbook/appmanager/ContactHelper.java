@@ -27,11 +27,11 @@ public class ContactHelper extends HelperBase{
   }
 
   public void clickButtonAddContact() {
-   click(By.xpath("//div[@id='content']/form/input[21]"));
+   click(By.name("submit"));
   }
 
   public void selectContact() {
-    click(By.xpath(".//*[@id='6']"));
+    click(By.name("selected[]"));
   }
 
   public void deletionContact() {

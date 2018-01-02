@@ -13,12 +13,6 @@ public class GroupDate {
     this.footer = footer;
   }
 
-  public GroupDate( String name, String header, String footer) {
-    this.name = name;
-    this.id = 0;
-    this.header = header;
-    this.footer = footer;
-  }
   public String getName() {
     return name;
   }
@@ -40,28 +34,33 @@ public class GroupDate {
   }
 
   @Override
+  public String toString() {
+    return "GroupDate{" +
+            "name='" + name + '\'' +
+            ", id=" + id +
+            '}';
+  }
+
+
+  @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
 
     GroupDate groupDate = (GroupDate) o;
 
-    if (id != groupDate.id) return false;
     return name != null ? name.equals(groupDate.name) : groupDate.name == null;
   }
 
   @Override
   public int hashCode() {
-    int result = name != null ? name.hashCode() : 0;
-    result = 31 * result + id;
-    return result;
+    return name != null ? name.hashCode() : 0;
   }
 
-  @Override
-  public String toString() {
-    return "GroupDate{" +
-            "name='" + name + '\'' +
-            ", id=" + id +
-            '}';
+  public GroupDate(String name, String header, String footer) {
+    this.name = name;
+    this.id = Integer.MAX_VALUE;
+    this.header = header;
+    this.footer = footer;
   }
 }

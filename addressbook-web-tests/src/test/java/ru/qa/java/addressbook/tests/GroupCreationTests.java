@@ -18,17 +18,10 @@ public class GroupCreationTests extends TestBase{
     app.getGroupHelper().createGroup(group);
     List<GroupDate> after = app.getGroupHelper().getGroupList();
     Assert.assertEquals(after.size(), before.size() + 1);
-//    int max = 0;
-//    for (GroupDate g : after) {
-//      if(g.getId() > max) {
-//        max = g.getId();
-//      }
-//    }
     before.add(group);
     Comparator<? super GroupDate> byId = (g1, g2) ->Integer.compare(g1.getId(), g2.getId());
     before.sort(byId);
     after.sort(byId);
     Assert.assertEquals(before, after);
   }
-
 }

@@ -1,15 +1,30 @@
 package ru.qa.java.addressbook.tests;
 
+import org.junit.Assert;
 import org.testng.annotations.Test;
 
 import ru.qa.java.addressbook.model.ContactDate;
+
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
 
 public class ContactCreationTests extends TestBase {
 
   @Test
   public void testContactCreation() {
-    app.getContactHelper().createContact(new ContactDate("Arsen", "Wenger",
+    List<ContactDate> before = app.getContactHelper().getContactList();
+    ContactDate contact = new ContactDate("Arsen", "Wenger",
             "London", "arsen_wenger@gmail.com",
-            "+78304458345435"));
+            "+78304458345435");
+    app.getContactHelper().createContact(contact);
+    List<ContactDate> after = app.getContactHelper().getContactList();
+    Assert.assertEquals(after.size(), before.size() +1);
+    before.add(contact);
+    Comparator<? super ContactDate> byId = (g1, g2) ->Integer.compare(g1.getId(), g2.getId());
+    before.sort(byId);
+    after.sort(byId);
+    Assert.assertEquals(before, after);
+
   }
 }

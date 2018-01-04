@@ -6,6 +6,13 @@ public class GroupDate {
   private final String header;
   private final String footer;
 
+  public GroupDate(String name, String header, String footer) {
+    this.name = name;
+    this.id = Integer.MAX_VALUE;
+    this.header = header;
+    this.footer = footer;
+  }
+
   public GroupDate(int id, String name, String header, String footer) {
     this.name = name;
     this.id = id;
@@ -57,10 +64,4 @@ public class GroupDate {
     return name != null ? name.hashCode() : 0;
   }
 
-  public GroupDate(String name, String header, String footer) {
-    this.name = name;
-    this.id = Integer.MAX_VALUE;
-    this.header = header;
-    this.footer = footer;
-  }
 }

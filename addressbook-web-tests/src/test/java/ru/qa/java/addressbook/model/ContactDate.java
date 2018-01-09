@@ -1,31 +1,12 @@
 package ru.qa.java.addressbook.model;
 
 public class ContactDate {
-  private final String firstName;
-  private final String lastName;
-  private final String address;
-  private final String email;
-  private final String phone2;
-  private int id;
-
-
-  public ContactDate(int id, String firstName, String lastName, String address, String email, String phone2) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.address = address;
-    this.email = email;
-    this.phone2 = phone2;
-    this.id = id;
-  }
-
-  public ContactDate(String firstName, String lastName, String address, String email, String phone2) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.address = address;
-    this.email = email;
-    this.phone2 = phone2;
-    this.id = Integer.MAX_VALUE;
-  }
+  private  String firstName;
+  private  String lastName;
+  private  String address;
+  private  String email;
+  private  String phone2;
+  private int id =  Integer.MAX_VALUE;
 
   public String getFirstName() {
     return firstName;
@@ -51,8 +32,34 @@ public class ContactDate {
     return id;
   }
 
-  public void setId(int id) {
+  public ContactDate withId(int id) {
     this.id = id;
+    return this;
+  }
+
+  public ContactDate withLastName(String lastName) {
+    this.lastName = lastName;
+    return this;
+  }
+
+  public ContactDate withFirstName(String firstName) {
+    this.firstName = firstName;
+    return this;
+  }
+
+  public ContactDate withAddress(String address) {
+    this.address = address;
+    return this;
+  }
+
+  public ContactDate withEmail(String email) {
+    this.email = email;
+    return this;
+  }
+
+  public ContactDate withPhone2(String phone2) {
+    this.phone2 = phone2;
+    return this;
   }
 
   @Override

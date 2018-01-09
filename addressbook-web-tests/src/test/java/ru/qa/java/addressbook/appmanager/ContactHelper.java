@@ -25,6 +25,12 @@ public class ContactHelper extends HelperBase{
   public void clickButtonAddContact() {
    click(By.name("submit"));
   }
+  public void returnHomePage() {
+    if(isElementPresent(By.name("maintable"))) {
+      return;
+    }
+    click(By.linkText("home"));
+  }
 
   public void selectContact(int index) {
    wd.findElements(By.name("selected[]")).get(index).click();
@@ -53,11 +59,19 @@ public class ContactHelper extends HelperBase{
   public void gotoHomePage() {
     click(By.linkText("home"));
   }
+
   public void createContact(ContactDate contact) {
     gotoAddContact();
     fillConatctForm(contact);
     clickButtonAddContact();
     gotoHomePage();
+  }
+  public void modifyContacts(int index, ContactDate contact) {
+    selectContact(index);
+    initContactModification();
+    fillConatctForm(contact);
+    submitContactMOdification();
+    returnHomePage();
   }
 
   public boolean isThereAContact() {

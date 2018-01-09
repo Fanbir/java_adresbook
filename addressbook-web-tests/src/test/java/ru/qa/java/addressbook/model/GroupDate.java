@@ -1,24 +1,10 @@
 package ru.qa.java.addressbook.model;
 
 public class GroupDate {
-  private final String name;
-  private int id;
-  private final String header;
-  private final String footer;
-
-  public GroupDate(String name, String header, String footer) {
-    this.name = name;
-    this.id = Integer.MAX_VALUE;
-    this.header = header;
-    this.footer = footer;
-  }
-
-  public GroupDate(int id, String name, String header, String footer) {
-    this.name = name;
-    this.id = id;
-    this.header = header;
-    this.footer = footer;
-  }
+  private int id = Integer.MAX_VALUE;;
+  private String name;
+  private String header;
+  private String footer;
 
   public String getName() {
     return name;
@@ -31,13 +17,28 @@ public class GroupDate {
   public int getId() {
     return id;
   }
-  public void setId(int id) {
-    this.id = id;
-  }
-
-
   public String getFooter() {
     return footer;
+  }
+
+  public GroupDate withId(int id) {
+    this.id = id;
+    return this;
+  }
+
+  public GroupDate withName(String name) {
+    this.name = name;
+    return this;
+  }
+
+  public GroupDate withHeader(String header) {
+    this.header = header;
+    return this;
+  }
+
+  public GroupDate withFooter(String footer) {
+    this.footer = footer;
+    return this;
   }
 
   @Override

@@ -4,9 +4,14 @@ import org.junit.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.qa.java.addressbook.model.GroupDate;
+import ru.qa.java.addressbook.model.Groups;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.testng.AssertJUnit.assertEquals;
 
 public class GroupModoficationTests extends TestBase {
 
@@ -20,17 +25,14 @@ public class GroupModoficationTests extends TestBase {
 
   @Test
   public void testGroupModification() {
-    Set<GroupDate> before = app.group().all();
+    Groups before = app.group().all();
     GroupDate modifiedGroup = before.iterator().next();
     GroupDate group = new GroupDate()
             .withId(modifiedGroup.getId()).withName("test1").withHeader("test2").withFooter("test3");
     app.group().modify(group);
-    Set<GroupDate> after = app.group().all();
-    Assert.assertEquals(after.size(), before.size());
-
-    before.remove(modifiedGroup);
-    before.add(group);
-    Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
+    Groups after = app.group().all();
+    assertEquals(after.size(), before.size());
+    assertThat(after, equalTo(before.withOut(modifiedGroup).withAdded(group)));
 
   }
 }

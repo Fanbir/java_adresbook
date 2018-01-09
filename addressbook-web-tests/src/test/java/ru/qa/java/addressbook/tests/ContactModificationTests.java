@@ -23,7 +23,7 @@ public class ContactModificationTests extends TestBase {
     ContactDate contact = new ContactDate(before.get(before.size()-1).getId(),"Arsen", "Wenger", "London", "arsen_wenger@gmail.com","+78304458345435");
     app.getContactHelper().fillConatctForm(contact);
     app.getContactHelper().submitContactMOdification();
-    app.getNavigationHelper().returnHomePage();
+    app.goTo().returnHomePage();
     List<ContactDate> after = app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(), before.size());
     before.remove(before.size() -1 );

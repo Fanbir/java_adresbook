@@ -11,9 +11,9 @@ import java.util.List;
 public class ContactModificationTests extends TestBase {
   @BeforeMethod
   public void ensurePrecanditions() {
-    app.getContactHelper().gotoHomePage();
-    if( ! app.getContactHelper().isThereAContact()) {
-      app.getContactHelper().createContact(new ContactDate("Arsen", "Wenger",
+    app.contact().HomePage();
+    if(app.contact().list().size() == 0) {
+      app.contact().create(new ContactDate("Arsen", "Wenger",
               "London", "arsen_wenger@gmail.com",
               "+78304458345435"));
     }
@@ -21,13 +21,13 @@ public class ContactModificationTests extends TestBase {
 
   @Test
   public void testContactModification() {
-    List<ContactDate> before = app.getContactHelper().getContactList();
+    List<ContactDate> before = app.contact().list();
     int index = before.size() -1;
     ContactDate contact = new ContactDate(before.get(index).getId(),"Arsen", "Wenger",
             "London", "arsen_wenger@gmail.com",
             "+78304458345435");
-    app.getContactHelper().modifyContacts(index, contact);
-    List<ContactDate> after = app.getContactHelper().getContactList();
+    app.contact().modify(index, contact);
+    List<ContactDate> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size());
     before.remove(index);
     before.add(contact);

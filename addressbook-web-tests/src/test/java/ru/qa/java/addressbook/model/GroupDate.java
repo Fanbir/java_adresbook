@@ -48,8 +48,6 @@ public class GroupDate {
             ", id=" + id +
             '}';
   }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -57,12 +55,14 @@ public class GroupDate {
 
     GroupDate groupDate = (GroupDate) o;
 
+    if (id != groupDate.id) return false;
     return name != null ? name.equals(groupDate.name) : groupDate.name == null;
   }
 
   @Override
   public int hashCode() {
-    return name != null ? name.hashCode() : 0;
+    int result = id;
+    result = 31 * result + (name != null ? name.hashCode() : 0);
+    return result;
   }
-
 }

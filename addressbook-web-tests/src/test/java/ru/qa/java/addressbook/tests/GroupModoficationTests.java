@@ -6,29 +6,29 @@ import org.testng.annotations.Test;
 import ru.qa.java.addressbook.model.GroupDate;
 
 import java.util.HashSet;
-import java.util.List;
+import java.util.Set;
 
 public class GroupModoficationTests extends TestBase {
 
   @BeforeMethod
   public void ensurePrecanditions() {
     app.goTo().GroupPage();
-    if(app.group().list().size() == 0) {
-      app.group().create(new GroupDate().withName(""));
+    if(app.group().all().size() == 0) {
+      app.group().create(new GroupDate().withName("test1"));
     }
   }
 
   @Test
   public void testGroupModification() {
-    List<GroupDate> before = app.group().list();
-    int index = before.size()-1;
+    Set<GroupDate> before = app.group().all();
+    GroupDate modifiedGroup = before.iterator().next();
     GroupDate group = new GroupDate()
-            .withId(before.get(index).getId()).withName("test1").withHeader("test2").withFooter("test3");
-    app.group().modify(index, group);
-    List<GroupDate> after = app.group().list();
+            .withId(modifiedGroup.getId()).withName("test1").withHeader("test2").withFooter("test3");
+    app.group().modify(group);
+    Set<GroupDate> after = app.group().all();
     Assert.assertEquals(after.size(), before.size());
 
-    before.remove(index );
+    before.remove(modifiedGroup);
     before.add(group);
     Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
 

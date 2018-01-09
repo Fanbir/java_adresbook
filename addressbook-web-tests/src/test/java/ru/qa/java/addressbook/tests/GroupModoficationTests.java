@@ -1,6 +1,7 @@
 package ru.qa.java.addressbook.tests;
 
 import org.junit.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.qa.java.addressbook.model.GroupDate;
 
@@ -9,23 +10,24 @@ import java.util.List;
 
 public class GroupModoficationTests extends TestBase {
 
-  @Test
-  public void testGroupModification() {
+  @BeforeMethod
+  public void ensurePrecanditions() {
     app.getNavigationHelper().gotoGroupPage();
     if(! app.getGroupHelper().isThereAGroup()) {
       app.getGroupHelper().createGroup(new GroupDate("test1",null, null));
     }
+  }
+
+  @Test
+  public void testGroupModification() {
     List<GroupDate> before = app.getGroupHelper().getGroupList();
-    app.getGroupHelper().selectGroup(before.size()-1);
-    app.getGroupHelper().initGroupModification();
-    GroupDate group = new GroupDate(before.get(before.size()-1).getId(),"test1", "test2", "test3");
-    app.getGroupHelper().fillGroupForm(group);
-    app.getGroupHelper().submitGroupModification();
-    app.getGroupHelper().returnGroupPage();
+    int index = before.size()-1;
+    GroupDate group = new GroupDate(before.get(index).getId(),"test1", "test2", "test3");
+    app.getGroupHelper().modofyGroup(index, group);
     List<GroupDate> after = app.getGroupHelper().getGroupList();
     Assert.assertEquals(after.size(), before.size());
 
-    before.remove(before.size() -1 );
+    before.remove(index );
     before.add(group);
     Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
 

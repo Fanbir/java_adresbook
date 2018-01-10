@@ -8,6 +8,26 @@ public class ContactDate {
   private  String phone2;
   private int id =  Integer.MAX_VALUE;
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    ContactDate that = (ContactDate) o;
+
+    if (id != that.id) return false;
+    if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
+    return lastName != null ? lastName.equals(that.lastName) : that.lastName == null;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = firstName != null ? firstName.hashCode() : 0;
+    result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+    result = 31 * result + id;
+    return result;
+  }
+
   public String getFirstName() {
     return firstName;
   }
@@ -60,26 +80,6 @@ public class ContactDate {
   public ContactDate withPhone2(String phone2) {
     this.phone2 = phone2;
     return this;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    ContactDate that = (ContactDate) o;
-
-    if (!firstName.equals(that.firstName)) return false;
-    if (!lastName.equals(that.lastName)) return false;
-    return address.equals(that.address);
-  }
-
-  @Override
-  public int hashCode() {
-    int result = firstName.hashCode();
-    result = 31 * result + lastName.hashCode();
-    result = 31 * result + address.hashCode();
-    return result;
   }
 
   @Override

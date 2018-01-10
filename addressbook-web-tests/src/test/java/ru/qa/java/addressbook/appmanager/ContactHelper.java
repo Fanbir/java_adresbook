@@ -4,9 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.qa.java.addressbook.model.ContactDate;
-
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends HelperBase{
 
@@ -33,8 +33,8 @@ public class ContactHelper extends HelperBase{
     click(By.linkText("home"));
   }
 
-  public void selectContact(int index) {
-   wd.findElements(By.name("selected[]")).get(index).click();
+  public void selectContactById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
   }
 
   public void deletionContact() {
@@ -67,21 +67,20 @@ public class ContactHelper extends HelperBase{
     clickButtonAddContact();
     HomePage();
   }
-  public void modify(int index, ContactDate contact) {
-    selectContact(index);
+  public void modify(ContactDate contact) {
+    selectContactById(contact.getId());
     initContactModification();
     fillConatctForm(contact);
     submitContactMOdification();
     returnHomePage();
   }
 
-  public void delete(int index) {
-    selectContact(index);
+  public void delete(ContactDate contact) {
+    selectContactById(contact.getId());
     deletionContact();
     closeWindow();
     returnHomePage();
   }
-
   public boolean isThereAContact() {
     return isElementPresent(By.xpath(".//*[@id='maintable']/tbody/tr[2]"));
   }
@@ -90,8 +89,8 @@ public class ContactHelper extends HelperBase{
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<ContactDate> list() {
-    List<ContactDate> contacts = new ArrayList<ContactDate>();
+  public  Set<ContactDate> all() {
+    Set<ContactDate> contacts = new HashSet<ContactDate>();
     List<WebElement> elements = wd.findElements(By.xpath(".//*[@id='maintable']//tr[@name='entry']"));
     for (WebElement element: elements) {
       String lastName = element.findElement(By.xpath(".//td[2]")).getText();

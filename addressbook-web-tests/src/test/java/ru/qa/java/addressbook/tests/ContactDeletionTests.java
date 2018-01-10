@@ -1,12 +1,9 @@
 package ru.qa.java.addressbook.tests;
 
-import org.junit.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.qa.java.addressbook.model.ContactDate;
 import ru.qa.java.addressbook.model.Contacts;
-
-import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -19,7 +16,8 @@ public class ContactDeletionTests extends TestBase {
         app.contact().HomePage();
         if( app.contact().all().size() == 0) {
             app.contact().create(new ContactDate().withLastName("Arsen").withFirstName("Wenger")
-                    .withAddress("London").withEmail("arsen_wenger@gmail.com").withPhone2("+78304458345435"));
+                    .withAddress("London").withEmail("arsen_wenger@gmail.com")
+                    .withMobilePhone("+78304458345435").withWorkPhone("2954").withHomePhone("231546-4"));
         }
     }
 

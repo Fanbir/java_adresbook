@@ -5,7 +5,9 @@ public class ContactDate {
   private  String lastName;
   private  String address;
   private  String email;
-  private  String phone2;
+  private  String mobilePhone;
+  private  String workPhone;
+  private  String homePhone;
   private int id =  Integer.MAX_VALUE;
 
   @Override
@@ -44,8 +46,14 @@ public class ContactDate {
     return email;
   }
 
-  public String getPhone2() {
-    return phone2;
+  public String getMobilePhone() {
+    return mobilePhone;
+  }
+  public String getWorkPhone() {
+    return workPhone;
+  }
+  public String getHomePhone() {
+    return homePhone;
   }
 
   public int getId() {
@@ -77,11 +85,19 @@ public class ContactDate {
     return this;
   }
 
-  public ContactDate withPhone2(String phone2) {
-    this.phone2 = phone2;
+  public ContactDate withMobilePhone(String mobilePhone) {
+    this.mobilePhone = mobilePhone;
+    return this;
+  }
+  public ContactDate withWorkPhone(String workPhone) {
+    this.workPhone = workPhone;
     return this;
   }
 
+  public ContactDate withHomePhone(String homePhone) {
+    this.homePhone = homePhone;
+    return this;
+  }
   @Override
   public String toString() {
     return "ContactDate{" +

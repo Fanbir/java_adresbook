@@ -6,9 +6,7 @@ import org.openqa.selenium.WebElement;
 import ru.qa.java.addressbook.model.ContactDate;
 import ru.qa.java.addressbook.model.Contacts;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class ContactHelper extends HelperBase{
 
@@ -21,7 +19,9 @@ public class ContactHelper extends HelperBase{
     type(By.name("lastname"), contactDate.getLastName());
     type(By.name("address"), contactDate.getAddress());
     type(By.name("email"), contactDate.getEmail());
-    type(By.name("phone2"), contactDate.getPhone2());
+    type(By.name("home"), contactDate.getHomePhone());
+    type(By.name("mobile"), contactDate.getMobilePhone());
+    type(By.name("work"), contactDate.getWorkPhone());
   }
 
   public void clickButtonAddContact() {

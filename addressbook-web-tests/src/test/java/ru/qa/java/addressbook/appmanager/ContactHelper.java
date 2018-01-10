@@ -68,6 +68,7 @@ public class ContactHelper extends HelperBase{
     gotoAddContact();
     fillConatctForm(contact);
     clickButtonAddContact();
+    contactCash = null;
     HomePage();
   }
   public void modify(ContactDate contact) {
@@ -75,6 +76,7 @@ public class ContactHelper extends HelperBase{
     initContactModification();
     fillConatctForm(contact);
     submitContactMOdification();
+    contactCash = null;
     returnHomePage();
   }
 
@@ -82,6 +84,7 @@ public class ContactHelper extends HelperBase{
     selectContactById(contact.getId());
     deletionContact();
     closeWindow();
+    contactCash = null;
     returnHomePage();
   }
   public boolean isThereAContact() {
@@ -91,17 +94,21 @@ public class ContactHelper extends HelperBase{
   public int count() {
     return wd.findElements(By.name("selected[]")).size();
   }
+  private Contacts contactCash = null;
 
   public Contacts all() {
-    Contacts contacts = new Contacts();
+    if(contactCash!= null) {
+      return new Contacts(contactCash);
+    }
+    contactCash = new Contacts();
     List<WebElement> elements = wd.findElements(By.xpath(".//*[@id='maintable']//tr[@name='entry']"));
     for (WebElement element: elements) {
       String lastName = element.findElement(By.xpath(".//td[2]")).getText();
       String firstName = element.findElement(By.xpath(".//td[3]")).getText();
       String address = element.findElement(By.xpath(".//td[4]")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      contacts.add(new ContactDate().withId(id).withFirstName(firstName).withLastName(lastName).withAddress(address));
+      contactCash.add(new ContactDate().withId(id).withFirstName(firstName).withLastName(lastName).withAddress(address));
     }
-    return contacts;
+    return new Contacts(contactCash);
   }
 }

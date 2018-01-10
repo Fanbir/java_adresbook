@@ -4,7 +4,8 @@ public class ContactDate {
   private  String firstName;
   private  String lastName;
   private  String address;
-  private  String email;
+  private  String email1;
+  private  String email2;
   private  String mobilePhone;
   private  String workPhone;
   private  String homePhone;
@@ -42,8 +43,11 @@ public class ContactDate {
     return address;
   }
 
-  public String getEmail() {
-    return email;
+  public String getEmail1() {
+    return email1;
+  }
+  public String getEmail2() {
+    return email2;
   }
 
   public String getMobilePhone() {
@@ -80,8 +84,13 @@ public class ContactDate {
     return this;
   }
 
-  public ContactDate withEmail(String email) {
-    this.email = email;
+  public ContactDate withEmail1(String email1) {
+    this.email1 = email1;
+    return this;
+  }
+
+  public ContactDate withEmai2(String email2) {
+    this.email2 = email2;
     return this;
   }
 

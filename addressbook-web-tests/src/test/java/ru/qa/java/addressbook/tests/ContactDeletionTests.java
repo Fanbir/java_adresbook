@@ -4,7 +4,13 @@ import org.junit.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.qa.java.addressbook.model.ContactDate;
+import ru.qa.java.addressbook.model.Contacts;
+
 import java.util.Set;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.testng.AssertJUnit.assertEquals;
 
 public class ContactDeletionTests extends TestBase {
 
@@ -19,12 +25,11 @@ public class ContactDeletionTests extends TestBase {
 
     @Test
     public void ContactDeletionTests() {
-        Set<ContactDate> before = app.contact().all();
+        Contacts before = app.contact().all();
         ContactDate deletedContact = before.iterator().next();
         app.contact().delete(deletedContact);
-        Set<ContactDate> after = app.contact().all();
-        Assert.assertEquals(after.size(), before.size() - 1);
-        before.remove(deletedContact);
-        Assert.assertEquals(before, after);
+        Contacts after = app.contact().all();
+        assertEquals(after.size(), before.size() -1);
+        assertThat(after, equalTo(before.withOut(deletedContact)));
     }
 }

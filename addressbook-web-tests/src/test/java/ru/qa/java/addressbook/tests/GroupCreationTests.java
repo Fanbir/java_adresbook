@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import ru.qa.java.addressbook.model.GroupDate;
 import ru.qa.java.addressbook.model.Groups;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -16,11 +17,15 @@ import static org.testng.AssertJUnit.assertEquals;
 public class GroupCreationTests extends TestBase{
 
   @DataProvider
-  public Iterator<Object[]> validGroups() {
+  public Iterator<Object[]> validGroups() throws IOException {
     List<Object[]> list = new ArrayList<Object[]>();
-    list.add(new Object[] {new GroupDate().withName("test1").withHeader("header1").withFooter("footer1")});
-    list.add(new Object[] {new GroupDate().withName("test2").withHeader("header2").withFooter("footer2")});
-    list.add(new Object[] {new GroupDate().withName("test3").withHeader("header3").withFooter("footer3")});
+    BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/groups.csv")));
+    String line = reader.readLine();
+    while (line!=null) {
+      String[] split = line.split(";");
+      list.add(new Object[] {new GroupDate().withName(split[0]).withHeader(split[1]).withFooter(split[2])});
+      line = reader.readLine();
+    }
     return list.iterator();
   }
 

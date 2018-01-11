@@ -1,17 +1,20 @@
 package ru.qa.java.addressbook.model;
 
+import java.io.File;
+
 public class ContactDate {
-  private  String firstName;
-  private  String lastName;
-  private  String address;
-  private  String email1;
-  private  String email2;
-  private  String mobilePhone;
-  private  String workPhone;
-  private  String homePhone;
-  private  String allPhones;
-  private  String allEmails;
-  private int id =  Integer.MAX_VALUE;
+  private String firstName;
+  private String lastName;
+  private String address;
+  private String email1;
+  private String email2;
+  private String mobilePhone;
+  private String workPhone;
+  private String homePhone;
+  private String allPhones;
+  private String allEmails;
+  private File photo;
+  private int id = Integer.MAX_VALUE;
 
   @Override
   public boolean equals(Object o) {
@@ -48,6 +51,7 @@ public class ContactDate {
   public String getEmail1() {
     return email1;
   }
+
   public String getEmail2() {
     return email2;
   }
@@ -55,11 +59,24 @@ public class ContactDate {
   public String getMobilePhone() {
     return mobilePhone;
   }
+
   public String getWorkPhone() {
     return workPhone;
   }
+
   public String getHomePhone() {
     return homePhone;
+  }
+  public File getPhoto() {
+    return photo;
+  }
+
+  public String getAllPhones() {
+    return allPhones;
+  }
+
+  public String getAllEmails() {
+    return allEmails;
   }
 
   public int getId() {
@@ -100,6 +117,7 @@ public class ContactDate {
     this.mobilePhone = mobilePhone;
     return this;
   }
+
   public ContactDate withWorkPhone(String workPhone) {
     this.workPhone = workPhone;
     return this;
@@ -108,14 +126,6 @@ public class ContactDate {
   public ContactDate withHomePhone(String homePhone) {
     this.homePhone = homePhone;
     return this;
-  }
-
-  public String getAllPhones() {
-    return allPhones;
-  }
-
-  public String getAllEmails() {
-    return allEmails;
   }
 
   public ContactDate withAllEmails(String allEmails) {
@@ -128,6 +138,12 @@ public class ContactDate {
     return this;
 
   }
+
+  public ContactDate withPhoto(File photo) {
+    this.photo = photo;
+    return this;
+  }
+
   @Override
   public String toString() {
     return "ContactDate{" +

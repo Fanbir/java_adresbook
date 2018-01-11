@@ -10,6 +10,7 @@ public class ContactDate {
   private  String workPhone;
   private  String homePhone;
   private  String allPhones;
+  private  String allEmails;
   private int id =  Integer.MAX_VALUE;
 
   @Override
@@ -113,9 +114,19 @@ public class ContactDate {
     return allPhones;
   }
 
+  public String getAllEmails() {
+    return allEmails;
+  }
+
+  public ContactDate withAllEmails(String allEmails) {
+    this.allEmails = allEmails;
+    return this;
+  }
+
   public ContactDate withAllPhones(String allPhones) {
     this.allPhones = allPhones;
     return this;
+
   }
   @Override
   public String toString() {

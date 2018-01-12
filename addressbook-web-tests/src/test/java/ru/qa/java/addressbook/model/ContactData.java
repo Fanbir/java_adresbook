@@ -108,7 +108,7 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withEmai2(String email2) {
+  public ContactData withEmail2(String email2) {
     this.email2 = email2;
     return this;
   }

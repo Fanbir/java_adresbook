@@ -129,7 +129,7 @@ public class ContactHelper extends HelperBase{
     wd.navigate().back();
     return new ContactData().withId(contact.getId()).withFirstName(firstName)
             .withLastName(lastName).withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work)
-            .withEmail1(email1).withEmai2(email2).withAddress(address);
+            .withEmail1(email1).withEmail2(email2).withAddress(address);
   }
 
   private void initContactModificationById(int id) {

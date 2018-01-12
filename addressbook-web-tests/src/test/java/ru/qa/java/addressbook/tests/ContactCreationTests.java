@@ -19,7 +19,7 @@ public class ContactCreationTests extends TestBase {
             .withLastName("Arsen").withFirstName("Wenger")
             .withAddress("Hornsey Rd, London N7 7AJ")
             .withMobilePhone("+7(8304458345435)").withWorkPhone("29-54").withHomePhone("23 154 64")
-            .withEmail1("arsen_wenger@gmail.com").withEmai2("ars.W@mail.com").withPhoto(photo);
+            .withEmail1("arsen_wenger@gmail.com").withEmail2("ars.W@mail.com").withPhoto(photo);
     app.contact().create(contact);
     assertThat(app.contact().count(), equalTo(before.size() +1));
     Contacts after = app.contact().all();

@@ -5,12 +5,12 @@ import com.google.common.collect.ForwardingSet;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Contacts extends ForwardingSet<ContactDate> {
+public class Contacts extends ForwardingSet<ContactData> {
 
-  private Set<ContactDate> delegate;
+  private Set<ContactData> delegate;
 
   public Contacts(Contacts contact) {
-    this.delegate = new HashSet<ContactDate>(contact.delegate);
+    this.delegate = new HashSet<ContactData>(contact.delegate);
   }
 
   public Contacts() {
@@ -18,17 +18,17 @@ public class Contacts extends ForwardingSet<ContactDate> {
   }
 
   @Override
-  protected Set<ContactDate> delegate() {
+  protected Set<ContactData> delegate() {
     return delegate;
   }
 
-  public Contacts withAdded(ContactDate contact) {
+  public Contacts withAdded(ContactData contact) {
     Contacts contacts = new Contacts(this);
     contacts.add(contact);
     return contacts;
 }
 
-  public Contacts withOut(ContactDate contact) {
+  public Contacts withOut(ContactData contact) {
     Contacts contacts = new Contacts(this);
     contacts.remove( contact);
     return contacts;

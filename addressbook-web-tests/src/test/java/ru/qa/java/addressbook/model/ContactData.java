@@ -2,7 +2,7 @@ package ru.qa.java.addressbook.model;
 
 import java.io.File;
 
-public class ContactDate {
+public class ContactData {
   private String firstName;
   private String lastName;
   private String address;
@@ -21,7 +21,7 @@ public class ContactDate {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
 
-    ContactDate that = (ContactDate) o;
+    ContactData that = (ContactData) o;
 
     if (id != that.id) return false;
     if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
@@ -83,70 +83,70 @@ public class ContactDate {
     return id;
   }
 
-  public ContactDate withId(int id) {
+  public ContactData withId(int id) {
     this.id = id;
     return this;
   }
 
-  public ContactDate withLastName(String lastName) {
+  public ContactData withLastName(String lastName) {
     this.lastName = lastName;
     return this;
   }
 
-  public ContactDate withFirstName(String firstName) {
+  public ContactData withFirstName(String firstName) {
     this.firstName = firstName;
     return this;
   }
 
-  public ContactDate withAddress(String address) {
+  public ContactData withAddress(String address) {
     this.address = address;
     return this;
   }
 
-  public ContactDate withEmail1(String email1) {
+  public ContactData withEmail1(String email1) {
     this.email1 = email1;
     return this;
   }
 
-  public ContactDate withEmai2(String email2) {
+  public ContactData withEmai2(String email2) {
     this.email2 = email2;
     return this;
   }
 
-  public ContactDate withMobilePhone(String mobilePhone) {
+  public ContactData withMobilePhone(String mobilePhone) {
     this.mobilePhone = mobilePhone;
     return this;
   }
 
-  public ContactDate withWorkPhone(String workPhone) {
+  public ContactData withWorkPhone(String workPhone) {
     this.workPhone = workPhone;
     return this;
   }
 
-  public ContactDate withHomePhone(String homePhone) {
+  public ContactData withHomePhone(String homePhone) {
     this.homePhone = homePhone;
     return this;
   }
 
-  public ContactDate withAllEmails(String allEmails) {
+  public ContactData withAllEmails(String allEmails) {
     this.allEmails = allEmails;
     return this;
   }
 
-  public ContactDate withAllPhones(String allPhones) {
+  public ContactData withAllPhones(String allPhones) {
     this.allPhones = allPhones;
     return this;
 
   }
 
-  public ContactDate withPhoto(File photo) {
+  public ContactData withPhoto(File photo) {
     this.photo = photo;
     return this;
   }
 
   @Override
   public String toString() {
-    return "ContactDate{" +
+    return "ContactData{" +
             "firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
             ", address='" + address + '\'' +

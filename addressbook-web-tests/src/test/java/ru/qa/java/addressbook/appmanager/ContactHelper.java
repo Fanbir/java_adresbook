@@ -3,7 +3,7 @@ package ru.qa.java.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import ru.qa.java.addressbook.model.ContactDate;
+import ru.qa.java.addressbook.model.ContactData;
 import ru.qa.java.addressbook.model.Contacts;
 
 import java.util.List;
@@ -14,16 +14,16 @@ public class ContactHelper extends HelperBase{
    super(wd);
   }
 
-  public void fillConatctForm(ContactDate contactDate) {
-    type(By.name("firstname"), contactDate.getFirstName());
-    type(By.name("lastname"), contactDate.getLastName());
-    attach(By.name("photo"), contactDate.getPhoto());
-    type(By.name("address"), contactDate.getAddress());
-    type(By.name("home"), contactDate.getHomePhone());
-    type(By.name("mobile"), contactDate.getMobilePhone());
-    type(By.name("work"), contactDate.getWorkPhone());
-    type(By.name("email"), contactDate.getEmail1());
-    type(By.name("email2"), contactDate.getEmail2());
+  public void fillConatctForm(ContactData contactData) {
+    type(By.name("firstname"), contactData.getFirstName());
+    type(By.name("lastname"), contactData.getLastName());
+    attach(By.name("photo"), contactData.getPhoto());
+    type(By.name("address"), contactData.getAddress());
+    type(By.name("home"), contactData.getHomePhone());
+    type(By.name("mobile"), contactData.getMobilePhone());
+    type(By.name("work"), contactData.getWorkPhone());
+    type(By.name("email"), contactData.getEmail1());
+    type(By.name("email2"), contactData.getEmail2());
   }
 
   public void clickButtonAddContact() {
@@ -65,14 +65,14 @@ public class ContactHelper extends HelperBase{
     click(By.linkText("home"));
   }
 
-  public void create(ContactDate contact) {
+  public void create(ContactData contact) {
     gotoAddContact();
     fillConatctForm(contact);
     clickButtonAddContact();
     contactCash = null;
     HomePage();
   }
-  public void modify(ContactDate contact) {
+  public void modify(ContactData contact) {
     selectContactById(contact.getId());
     initContactModification();
     fillConatctForm(contact);
@@ -81,7 +81,7 @@ public class ContactHelper extends HelperBase{
     returnHomePage();
   }
 
-  public void delete(ContactDate contact) {
+  public void delete(ContactData contact) {
     selectContactById(contact.getId());
     deletionContact();
     closeWindow();
@@ -110,13 +110,13 @@ public class ContactHelper extends HelperBase{
       String address = element.findElement(By.xpath(".//td[4]")).getText();
       String allPhones = element.findElement(By.xpath(".//td[6]")).getText();
       String allEmails = element.findElement(By.xpath(".//td[5]")).getText();
-      contactCash.add(new ContactDate().withId(id).withFirstName(firstName)
+      contactCash.add(new ContactData().withId(id).withFirstName(firstName)
               .withLastName(lastName).withAddress(address).withAllPhones(allPhones).withAllEmails(allEmails));
     }
     return new Contacts(contactCash);
   }
 
-  public ContactDate infoFromEditForm(ContactDate contact) {
+  public ContactData infoFromEditForm(ContactData contact) {
     initContactModificationById(contact.getId());
     String lastName = wd.findElement(By.name("lastname")).getAttribute("value");
     String firstName = wd.findElement(By.name("firstname")).getAttribute("value");
@@ -127,7 +127,7 @@ public class ContactHelper extends HelperBase{
     String email1 = wd.findElement(By.name("email")).getAttribute("value");
     String email2 = wd.findElement(By.name("email2")).getAttribute("value");
     wd.navigate().back();
-    return new ContactDate().withId(contact.getId()).withFirstName(firstName)
+    return new ContactData().withId(contact.getId()).withFirstName(firstName)
             .withLastName(lastName).withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work)
             .withEmail1(email1).withEmai2(email2).withAddress(address);
   }

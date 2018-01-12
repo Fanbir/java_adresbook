@@ -5,7 +5,7 @@ import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import ru.qa.java.addressbook.model.GroupDate;
+import ru.qa.java.addressbook.model.GroupData;
 import ru.qa.java.addressbook.model.Groups;
 
 import java.io.*;
@@ -28,12 +28,12 @@ public class GroupCreationTests extends TestBase{
     while (line!=null) {
         xml+=line;
 //      String[] split = line.split(";");
-//      list.add(new Object[] {new GroupDate().withName(split[0]).withHeader(split[1]).withFooter(split[2])});
+//      list.add(new Object[] {new GroupData().withName(split[0]).withHeader(split[1]).withFooter(split[2])});
       line = reader.readLine();
     }
     XStream xstream = new XStream();
-    xstream.processAnnotations(GroupDate.class);
-    List<GroupDate> groups = (List<GroupDate>) xstream.fromXML(xml);
+    xstream.processAnnotations(GroupData.class);
+    List<GroupData> groups = (List<GroupData>) xstream.fromXML(xml);
     return groups.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
   }
 
@@ -47,12 +47,12 @@ public class GroupCreationTests extends TestBase{
       line = reader.readLine();
     }
     Gson gson = new Gson();
-    List<GroupDate> groups = gson.fromJson(json, new TypeToken<List<GroupDate>>(){}.getType());
+    List<GroupData> groups = gson.fromJson(json, new TypeToken<List<GroupData>>(){}.getType());
     return groups.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
   }
 
   @Test(dataProvider = "validGroupsFromJson")
-  public void testGroupCreation(GroupDate group) {
+  public void testGroupCreation(GroupData group) {
     app.goTo().GroupPage();
     Groups before = app.group().all();
     app.group().create(group);
@@ -66,7 +66,7 @@ public class GroupCreationTests extends TestBase{
 //  public void testBadGroupCreation() {
 //    app.goTo().GroupPage();
 //    Groups before = app.group().all();
-//    GroupDate group = new GroupDate().withName("test2'");
+//    GroupData group = new GroupData().withName("test2'");
 //    app.group().create(group);
 //    assertThat(app.group().сount(), equalTo(before.size()));
 //    Groups after = app.group().all();

@@ -1,7 +1,7 @@
 package ru.qa.java.addressbook.tests;
 
 import org.testng.annotations.Test;
-import ru.qa.java.addressbook.model.ContactDate;
+import ru.qa.java.addressbook.model.ContactData;
 import ru.qa.java.addressbook.model.Contacts;
 
 import java.io.File;
@@ -15,7 +15,7 @@ public class ContactCreationTests extends TestBase {
   public void testContactCreation() {
     Contacts before = app.contact().all();
     File photo = new File("src/test/resources/photo.png");
-    ContactDate contact = new ContactDate()
+    ContactData contact = new ContactData()
             .withLastName("Arsen").withFirstName("Wenger")
             .withAddress("Hornsey Rd, London N7 7AJ")
             .withMobilePhone("+7(8304458345435)").withWorkPhone("29-54").withHomePhone("23 154 64")

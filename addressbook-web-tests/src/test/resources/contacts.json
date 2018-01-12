@@ -1,0 +1,32 @@
+[
+  {
+    "firstName": "Wenger 0",
+    "lastName": "Arsen 0",
+    "address": "Hornsey Rd, London N7 7AJ 0",
+    "email1": "arsen_wenger0@gmail.com",
+    "email2": "ars.W0@mail.com",
+    "mobilePhone": "+7(8304458345435 0)",
+    "workPhone": "29-54 0",
+    "homePhone": "23 154 64 0"
+  },
+  {
+    "firstName": "Wenger 1",
+    "lastName": "Arsen 1",
+    "address": "Hornsey Rd, London N7 7AJ 1",
+    "email1": "arsen_wenger1@gmail.com",
+    "email2": "ars.W1@mail.com",
+    "mobilePhone": "+7(8304458345435 1)",
+    "workPhone": "29-54 1",
+    "homePhone": "23 154 64 1"
+  },
+  {
+    "firstName": "Wenger 2",
+    "lastName": "Arsen 2",
+    "address": "Hornsey Rd, London N7 7AJ 2",
+    "email1": "arsen_wenger2@gmail.com",
+    "email2": "ars.W2@mail.com",
+    "mobilePhone": "+7(8304458345435 2)",
+    "workPhone": "29-54 2",
+    "homePhone": "23 154 64 2"
+  }
+]

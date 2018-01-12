@@ -1,0 +1,22 @@
+<list>
+  <contact>
+    <firstName>Wenger 0</firstName>
+    <lastName>Arsen 0</lastName>
+    <address>Hornsey Rd, London N7 7AJ 0</address>
+    <email1>arsen_wenger0@gmail.com</email1>
+    <email2>ars.W0@mail.com</email2>
+    <mobilePhone>+7(8304458345435 0)</mobilePhone>
+    <workPhone>29-54 0</workPhone>
+    <homePhone>23 154 64 0</homePhone>
+  </contact>
+  <contact>
+    <firstName>Wenger 1</firstName>
+    <lastName>Arsen 1</lastName>
+    <address>Hornsey Rd, London N7 7AJ 1</address>
+    <email1>arsen_wenger1@gmail.com</email1>
+    <email2>ars.W1@mail.com</email2>
+    <mobilePhone>+7(8304458345435 1)</mobilePhone>
+    <workPhone>29-54 1</workPhone>
+    <homePhone>23 154 64 1</homePhone>
+  </contact>
+</list>

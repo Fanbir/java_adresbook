@@ -26,6 +26,12 @@ public class ContactAddressTest extends TestBase {
   public void testContactAddress() {
     ContactDate contact = app.contact().all().iterator().next();
     ContactDate contactInfoFromEditFrom = app.contact().infoFromEditForm(contact);
-    assertThat(contact.getAddress(), equalTo(contactInfoFromEditFrom.getAddress()));
+    assertThat(contact.getAddress(), equalTo(mergeAddress(contactInfoFromEditFrom)));
+  }
+
+  private String mergeAddress(ContactDate contact) {
+    return Arrays.asList(contact.getAddress())
+            .stream().filter((s) -> ! s.equals(""))
+            .collect(Collectors.joining("\n"));
   }
 }

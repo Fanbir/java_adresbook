@@ -9,3 +9,6 @@ Command Gradle
 5) gradlew run
 
 6) gradlew test - run tests
+7) -ea -Dbrowser=firefox
+8) gradlew -Pbrowser=firefox testContacts
+9) gradlew -Ptarget=local testContacts   (configuration data in file)

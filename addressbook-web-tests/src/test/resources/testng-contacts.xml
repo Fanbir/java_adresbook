@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite1" verbose="1" >
+    <test name="Contacts">
+        <classes>
+            <class name="ru.qa.java.addressbook.tests.ContactCreationTests" />
+            <class name="ru.qa.java.addressbook.tests.ContactModificationTests" />
+            <class name="ru.qa.java.addressbook.tests.ContactPhoneTest" />
+            <class name="ru.qa.java.addressbook.tests.ContactEmailTest" />
+            <class name="ru.qa.java.addressbook.tests.ContactAddressTest" />
+            <class name="ru.qa.java.addressbook.tests.ContactDeletionTests" />
+        </classes>
+    </test>
+</suite>

@@ -3,32 +3,73 @@ package ru.qa.java.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 
+@Entity
+@Table (name = "addressbook")
 @XStreamAlias("contact")
 public class ContactData {
-  @Expose
-  private String firstName;
-  @Expose
-  private String lastName;
-  @Expose
-  private String address;
-  @Expose
-  private String email1;
-  @Expose
-  private String email2;
-  @Expose
-  private String mobilePhone;
-  @Expose
-  private String workPhone;
-  @Expose
-  private String homePhone;
-  private String allPhones;
-  private String allEmails;
-  private File photo;
+
+  @Id
+  @Column(name = "id")
   @XStreamOmitField
   private int id = Integer.MAX_VALUE;
+
+  @Expose
+  @Column(name = "firstname")
+  private String firstName;
+
+  @Expose
+  @Column(name = "lastname")
+  private String lastName;
+
+  @Expose
+  @Column(name = "address")
+  @Type(type = "text")
+  private String address;
+
+
+  @Expose
+  @Column(name = "email")
+  @Type(type = "text")
+  private String email1;
+
+  @Expose
+  @Column(name = "email2")
+  @Type(type = "text")
+  private String email2;
+
+
+  @Expose
+  @Column(name = "mobile")
+  @Type(type = "text")
+  private String mobilePhone;
+
+  @Expose
+  @Column(name = "work")
+  @Type(type = "text")
+  private String workPhone;
+
+  @Expose
+  @Column(name = "home")
+  @Type(type = "text")
+  private String homePhone;
+
+  @Expose
+  @Transient
+  private String allPhones;
+
+  @Expose
+  @Transient
+  private String allEmails;
+
+  //  @Expose
+  @Column(name = "photo")
+  @Type(type = "text")
+  private String photo;
 
   @Override
   public boolean equals(Object o) {
@@ -82,7 +123,7 @@ public class ContactData {
     return homePhone;
   }
   public File getPhoto() {
-    return photo;
+    return new File(photo);
   }
 
   public String getAllPhones() {
@@ -154,7 +195,7 @@ public class ContactData {
   }
 
   public ContactData withPhoto(File photo) {
-    this.photo = photo;
+    this.photo = photo.getPath();
     return this;
   }
 

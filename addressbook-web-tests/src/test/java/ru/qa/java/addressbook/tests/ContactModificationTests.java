@@ -12,8 +12,8 @@ import static org.testng.AssertJUnit.assertEquals;
 public class ContactModificationTests extends TestBase {
   @BeforeMethod
   public void ensurePrecanditions() {
-    app.contact().HomePage();
-    if(app.contact().all().size() == 0) {
+    if (app.db().contacts().size() == 0) {
+      app.contact().HomePage();
       app.contact().create(new ContactData().withLastName("Arsen").withFirstName("Wenger")
               .withAddress("Hornsey Rd, London N7 7AJ")
               .withMobilePhone("+7(8304458345435)").withWorkPhone("29-54").withHomePhone("23 154 64")
@@ -23,7 +23,7 @@ public class ContactModificationTests extends TestBase {
 
   @Test
   public void testContactModification() {
-    Contacts before = app.contact().all();
+    Contacts before = app.db().contacts();
     ContactData modifiedContact = before.iterator().next();
     ContactData contact = new ContactData()
             .withId(modifiedContact.getId()).withLastName("Arsen").withFirstName("Wenger")
@@ -32,7 +32,7 @@ public class ContactModificationTests extends TestBase {
             .withEmail1("arsen_wenger@gmail.com").withEmail2("ars.W@mail.com");
     app.contact().modify(contact);
     assertThat(app.group().сount(), equalTo(before.size()));
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
     assertThat(after, equalTo(before.withOut(modifiedContact).withAdded(contact)));
   }
 }
